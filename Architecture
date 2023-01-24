@@ -8,6 +8,13 @@ Splunk Benefits -->> Real-Time Performance Monitoring , Logging Tool , Stack Sec
 
 Splunk Products ->> Splunk Core , Splunk IT operations , Splunk Security etc
 
+Splunk Enterprise Licensing -->>
+Slunk Platform License 
+Splunk Enterprise infrastructure license
+Splunk Enterprise Trial license
+Free license
+
+
 Splunk have six components ---->>>
 
 1) Universal Forwarder --- Light weight version of splunk .It does not have any capability except forward the data from one end to another end .
@@ -36,6 +43,8 @@ which one we are using in SH,IDX&HF
 UF to HF --- enable 9997 port its called forwarding port .
 HF to IDX --- enable 9997 port its called forwarding port .
 IDX TO SH ---- enable 8089 port. this port is called management port .
+
+
 
 
 
