@@ -4,7 +4,9 @@ What is Splunk ?
 Transactional Data, Customer Data, Network Data, Configuration Settings, csv , Security data, and more. It can collect all of the mentioned types of data and even 
 more and then process all of that data based on conditions set by the user and finally visualize that data for further presentation and a better understanding of the Data collected.
 
+Splunk Benefits -->> Real-Time Performance Monitoring , Logging Tool , Stack Security & Alerting , Dashboards & Visualisations , Data Analytics 
 
+Splunk Products ->> Splunk Core , Splunk IT operations , Splunk Security etc
 
 Splunk have six components ---->>>
 
