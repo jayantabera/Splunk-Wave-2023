@@ -1,0 +1,34 @@
+
+Splunk have six components ---->>>
+
+1) Universal Forwarder --- Light weight version of splunk .It does not have any capability except forward the data from one end to another end .
+
+2) Heavy Forwarder ----- Its a heavy waight version of splunk . Not only it can forward the data from one end to another end it can do parsing,filtering,masking .
+
+89694694641
+13127644442
+249634*****
+***********
+
+
+3) Indexer ---- Its also a heavy weight version of splunk with all features enabled & this is a server where data get stored . Basicially its called splunk storage .
+
+
+4) Search head ---- Its also a heavy weight version of splunk its enables graphical user interface for the end user to see the data which stored in indexer . 
+               [note: Uf dont have graphical user interface(GUI) & IDX,HF,SH have CLI & GUI Access ]
+			   
+5) License master ---- from splunk.com ypu can buy a lisence , its justa file extension license , you just get a key you just upload this . Its also same splunk version 
+which one we are using in SH,IDX&HF
+
+6) Deployment server -  Its a heavy waight version of splunk  . It connected whole the splunk architecture . we can push any configuration through Deployment server.
+
+
+
+UF to HF --- enable 9997 port its called forwarding port .
+HF to IDX --- enable 9997 port its called forwarding port .
+IDX TO SH ---- enable 8089 port. this port is called management port .
+
+
+
+
+
