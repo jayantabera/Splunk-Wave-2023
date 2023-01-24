@@ -1,4 +1,11 @@
 
+What is Splunk ?
+=>Splunk is data collection, analysis & Visualisation Tool. Companies use this tool to collect and monitor various types of data such as Application Metrics, Application logs, 
+Transactional Data, Customer Data, Network Data, Configuration Settings, csv , Security data, and more. It can collect all of the mentioned types of data and even 
+more and then process all of that data based on conditions set by the user and finally visualize that data for further presentation and a better understanding of the Data collected.
+
+
+
 Splunk have six components ---->>>
 
 1) Universal Forwarder --- Light weight version of splunk .It does not have any capability except forward the data from one end to another end .
