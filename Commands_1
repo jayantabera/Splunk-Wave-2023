@@ -1,0 +1,56 @@
+http://127.0.0.1:8000/en-GB/app/launcher/home
+
+8000 = splunk web port 
+en-GB = splunk on this language 
+app = folder name 
+launcher = app name 
+
+Host = System name / server name
+source = actual path of data 
+sourcetype = logical segregation of data 
+Index = Where we stored our data 
+
+
+| = pipe 
+
+
+## Search - is used for searching any value or any event from raw data . 
+
+* = wildcard > wildcard -- means all
+Attributes :-
+NOT = except this one
+OR = either or condition
+AND = both
+
+[note: fields names are case sensitive]
+
+##table = statistical format view 
+
+table = | table <field_name>,<field_name>,<field_name>
+table = | table <field_name> <field_name> <field_name> 
+
+| table name,location
+
+## dedup = is used for removing the dupicate value from table 
+ | dedup <field_name>,<field_name>,<field_name>
+ 
+## fields = filter the fields which one we want to work
+
+ | fields <field_name> - filter the fields .
+ 
+ | fields - <field_name> - "-" works like not operater .
+ 
+
+##  rename ---->>>> used for rename the fields
+
+|rename <old_field_name> as <new_field_name>
+| rename "method" as "METHOD"
+| rename "method" as "METHOD","status" as "STATUA"
+
+##   replace -->> used for replace the field value
+
+|replace <old_value> with <new_value> in <field_name>
+| replace "200" with "Successful" in status
+
+
+
