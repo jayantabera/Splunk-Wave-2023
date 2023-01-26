@@ -1,0 +1,93 @@
+## Add Data -->
+Settings > Add data > upload > select file > Select sourcetype > Next > Select Index > Submit 
+
+Create Sourcetype = Settings>sourcetype> create new > (sourcetype_name) > submit 
+
+
+############################################################
+
+##   where --->>>>> used for comparing two fields 
+| where status>bytes
+[case sensitive]
+
+###########################################################
+
+##   head -->> by default shows 1st 10 values
+if you want to see more event, just put 
+| head 100 
+
+
+
+##   tail --->> by default it shows last 10 values
+| tail 100
+head & tail command are opposite command 
+
+#############################################################
+##   sort ->>>
+ascending or descending order arrange 
+ |sort bytes --> assenting
+ |sort - bytes ----> descending 
+
+########################################################
+ 
+#######     transforming commands
+top
+rare
+stats 
+top , rare , stats --> transforming or reporting command .
+
+#####################################################################################################################################################
+## Top -->>> used for facing maximum occurrence of the field values.
+ | top <field_name>
+ 
+ Which file counting high this will show 1st & his percentage.
+ 
+ --->>> Attributes ---->>
+ limit = 100
+ showperc=f
+ showcount=f
+ limit=0 --- all
+## rare --- Opposite of Top Command & top & rare commands attributes are same.
+ 
+##########################################################################################################################################################
+ stats --- is used for visualization tool 99% query used stats command for statistical aggregations like count,min,max,avg,sum,dc(unic count),list,values. 
+ 
+ |stats <stats_funtion> by <field_name> ---- > Structure 
+ 
+ | stats count - it shows all event count.
+ 
+ | stats count by method - it will show the count of field values.
+ 
+ rename ----->>> 
+ 
+ | stats count as "event_count" by method -- we can directly rename fields using stats command.
+ 
+  --->>> Attributes or Stats Functions ---->> 
+ 
+ min - return the minimum value of a field. 
+ | stats min(bytes) by method,file
+ | stats min(bytes) as bytes by method,file
+  index=_internal sourcetype=splunkd_ui_access | stats min(bytes) as bytes by method,file
+ 
+ max --- its return the maximum values of a field
+ 
+  index=_internal sourcetype=splunkd_ui_access | stats max(bytes) as bytes by method
+ 
+avg --- its return the average values of a field
+index=_internal sourcetype=splunkd_ui_access | stats max(bytes) as max_bytes,min(bytes) as min_bytes,avg(bytes) as avg_bytes by method
+ 
+ sum - returns summation of field values.
+  index=_internal sourcetype=splunkd_ui_access | stats sum(bytes) as total_bytes by method
+ 
+ values --- it retunes list of unique values of a field.
+  index=_internal sourcetype=splunkd_ui_access | stats values(status) as status by method
+  
+  list --- >> shows list of all values.
+index=_internal sourcetype=splunkd_ui_access | stats list(status) as status by method
+  
+  dc ---- its shows unique count of field values.
+   index=_internal sourcetype=splunkd_ui_access | stats dc(status) as status by method
+   
+index=_internal | stats count as "event count",min(status) as min_status,max(status) as max_status,sum(status) as sum_status,avg(status) as avg_status,values(status),dc(status) by method
+  
+######################################################################################################################################################################
