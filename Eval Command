@@ -1,0 +1,35 @@
+#####       eval(evaluate) --- we can use any mathamatical logic .+,%,*   ,,,, not filter             
+|eval <new_field_name>=logic
+| eval "summation"=status*bytes, "div"=bytes/status, "sub"=bytes-status
+
+.(dot)-concatinate ---- two values marge side by side ..
+index=_internal sourcetype=splunkd_ui_access | table method,status,bytes | dedup method,status,bytes | eval "summation"=status*bytes, "div"=bytes/status, "sub"=bytes-status | eval "name"=method." = ".status
+if you wanty to add any string or sign or space just put inside "<sign/space/string/anything>"
+
+round up ---- >>
+|eval "new_field_name"=round(field_name,<digit>)     [round upto digit, you can round upto zero decimal]
+
+index=_internal sourcetype=splunkd_ui_access | table method,status,bytes | dedup method,status,bytes | eval "summation"=status*bytes, "div"=bytes/status, "sub"=bytes-status | eval "name"=method." = ".status |eval "new_field_name"=round(div,1)
+
+index=_internal sourcetype=splunkd_ui_access | table method,status,bytes | dedup method,status,bytes | eval "summation"=status*bytes, "div"=bytes/status, "sub"=bytes-status | eval "name"=method." = ".status |eval "new_field_name"=round((((status/bytes)*100)/2),1)
+
+uppercase & lowercase ------ >>this func we use for small & capital letter ..
+
+| eval <new_field_name>=lower(<field_name>)
+index=_internal sourcetype=splunkd_ui_access | table method,status,bytes | dedup method,status,bytes | eval "summation"=status*bytes, "div"=bytes/status, "sub"=bytes-status | eval "name"=method." = ".status |eval "new_field_name"=round((((status/bytes)*100)/2),1) | eval new_field_name_2=lower(method)
+
+| eval <new_field_name>=upper(<field_name>)
+index=_internal sourcetype=splunkd_ui_access | table method,status,bytes | dedup method,status,bytes | eval "summation"=status*bytes, "div"=bytes/status, "sub"=bytes-status | eval "name"=method." = ".status |eval "new_field_name"=round((((status/bytes)*100)/2),1) | eval new_field_name_2=lower(method) | eval new_field_name_3=upper(new_field_name_2)
+
+Condition Function ----->>>>>>
+if.....else
+
+|eval <new_field_name>=if(condition,value,else)    --- must have to give else condition 
+
+index=_internal sourcetype=splunkd_ui_access | table method,status,bytes | dedup method,status,bytes | eval "summation"=status*bytes, "div"=bytes/status, "sub"=bytes-status | eval "name"=method." = ".status |eval "new_field_name"=round((((status/bytes)*100)/2),1) | eval new_field_name_2=lower(method) | eval new_field_name_3=upper(new_field_name_2) | eval "HTTP_Status"=if(status=200,"Good",if(status=303,"unable","Bad"))
+
+case ---->>>
+| eval <new_field_name>=case(case1,value1,case2,value2,case3,value3 .... ,universal true,else)
+
+index=_internal sourcetype=splunkd_ui_access | table method,status,bytes | dedup method,status,bytes | eval "summation"=status*bytes, "div"=bytes/status, "sub"=bytes-status | eval "name"=method." = ".status |eval "new_field_name"=round((((status/bytes)*100)/2),1) | eval new_field_name_2=lower(method) | eval new_field_name_3=upper(new_field_name_2) | eval "HTTP_Status"=if(status=200,"Good",if(status=303,"unable","Bad")) | eval "new_bytes"=case(bytes<1000,"low_memory",bytes>999 AND bytes<2000,"good_memory",1=1,"high_memory")
+
