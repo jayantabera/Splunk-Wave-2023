@@ -1,0 +1,47 @@
+
+#### timechart  -----> this will show the values on the based on time .
+
+timechart & stats attributes are same .
+
+| timechart count ------->>> it will shows the events based on time .
+
+     span ---- s ->sec
+          m ->minute
+		      h -> hour       -------- | timechart span=1h count
+		      d ->day
+		      w ->week
+		      mon -> month
+		  
+| timechart span=5m count
+
+#####     _time --->>> its a internal field of splunk . it indicates time when the log generated .
+
+
+#######    | bin span=<time> _time  --->> when you are using other commands except timechart using this command you can change time interval.
+                 | bin span=20m _time 
+
+###   addcoltotals ----- used for newmarical field values it will appeed the values coloum wise .
+                  creat a new row below where we able to see the summation .
+|addcoltotals <field_name>
+
+| addcoltotals labelfield=TOTAL label=SUM
+
+
+####   addtotals --->>> used for newmarical field values 
+                 adding the field values through row wise & creat a new coloum.
+    attribues are same 
+	
+	attribute -->>>   col=t --- we are able to do coloum wise summation use this attribute.
+	## index=_internal sourcetype=splunkd_ui_access | table method,status,bytes | dedup method,status,bytes | replace "GET" with "vinay","POST" with "ankith" in method | addtotals col=t labelfield=Sum label=sum2
+	
+
+
+####   append ---->>> it marge two quary and creat new row (row wise)
+
+quary_1 | append [|search quary_2] 
+
+
+#### appendcols ---->>>it marge two quary and creat new col (col wise)
+
+quary_1 | appendcols [|search quary_2] | appendcols [|search quary_3]
+
