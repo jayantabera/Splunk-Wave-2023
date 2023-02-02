@@ -1,0 +1,29 @@
+....(1)..| rex field=...(2) "...(3)..(?<new_field_name>..(4)..)..(5).."
+
+(1) --- part of any quarry 
+(2) --- _raw ---> raw data
+we have a field like "name" and its value ["vinay12345"]
+         field=name 
+(3) --- pre pattern
+(4) --- extracted pattern 
+(5) --- post pattern 
+
+extracted pattern ----
+
+\w = word ectractor
+\d = digit
+\s = space
+? = 0 or 1 ocurances
++ = 1 or more than one
+.* = all
+
+\[
+\]
+\.
+\,
+
+index=_internal sourcetype=splunkd_ui_access | rex field=_raw ".*\[\d+\/\w+\/(?<new>\d+)\:\d+.*" | table new
+index=_internal sourcetype=splunkd_ui_access | rex field=_raw ".*\(\w+\,\s+\w+\s+\w+\)\s+(?<new>\w+\/\d+\.\d+\.\d+)\.\d+\s+.*"
+index=_internal sourcetype=splunkd_ui_access | rex field=other ".*\s+(?<new>.*)" | table new
+
+settings ---- fields ---- Field extractions ---- new ---Destination app --- Name --- Apply to -- whatever written inside "" 
