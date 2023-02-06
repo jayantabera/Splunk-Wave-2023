@@ -1,0 +1,53 @@
+----------------- Dashboard ---------------------------
+					
+					
+For Making your dashboard at 1st creat your quarry --->>> save as >> new_dashboard >> Dashboard Title >> Permissions >>
+>> Panel Title >> save as dashboard 
+
+                                      <<--- Inputs --->>
+									  
+                   <<<<-----  Radio  ---->>> 
+
+edit >> add input >> radio >> edit radio >> Give a lable >> "Check" on search on change >> creat a token name >>
+>> static option --- Give a name = its value
+                 like All = *  [For all] 
+				 >>>> Then Dynamic opions  ---- Put your quary inside "Search String" >> Field For Label & Field For Value
+				Like --->>> 
+                        index=_internal sourcetype=splunkd_ui_access | table method | dedup method
+   then chose a default value like i chose (All) >>>> then save 
+
+For Pass_token name inside dashboard --->> go to panel edit quary --->> then using search command put your token name inside $$ sign --->> like 
+index=_internal sourcetype=splunkd_ui_access  | stats count by status 
+| search status="$status$" -----------------<status> my token name .
+
+---->>[imp: Dropdown / link list setup same way both are same]
+
+Time --->>>
+
+edit >> add input >> radio >> Time >> Give a lable >> "Check" on search on change >> creat a token name >> & chose Default time >>
+>> For pass time token >> go to panel edit search >> click "Time Range" >> Here shows "shared time picker(your token name shows here)"
+
+manually Doing this go to every panel edit search & do same way . 
+
+
+
+          <<<<-------------  Multiselect ------>>>>>>
+
+everythings same as "Radio input" but one things you have to do ---->> inside token option >> 
+Token Value Prefix = <field_name>="      ---- like >>status="
+Token Value Suffix = " 
+Delimiter = <space>OR<space>         ------like >> OR 
+IN Preview it shows like that ---
+status="value1" OR status="value2" 
+
+For Pass_token name inside dashboard --->> go to panel edit quary --->> then using search command put your token name inside $$ sign --->> like that way --->>
+index=_internal sourcetype=splunkd_ui_access  | stats count by status 
+| search "$status$" -----------------<status> my token name
+
+[imp: multiselect & checkbox are same ]
+
+
+If you already have Dashboard & you have a quary . then you want to add this quary in same dashboard panel --- >>
+in dashboard have a option called "Add panel" click here >> new >> chose a option (like statical or area chart or etc. ) 
+>>then inside "Search String" peast your quary & chose time token & give a name & save .
+
