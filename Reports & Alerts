@@ -10,29 +10,30 @@ Change The permission .
 
 Settings ---- search,report& alart
 
+* * * * * 
+----> min of an hour (0-59)
+--------> hour of a day (0-23)
+-----------> Day of  Month (1-31)
+--------------> month of a year (1-12)
+-----------------> Day of a week (0-7) [ 0,7 = Sunday ]
 
-* * * * *
-* --> min of the hour(0-59)
-* --> hour of the day (0-23)
-* --> Day of a month (1-31)
-* --> month of a year (1-12)
-* --> Day of a week (0-7) [0,7 --- sunday ]
-                          [1 -- monday ]
-						  
-25 * * * * ----> every 25 min of the hour
-*/5 * * * * ----> every 5 min
+25 * * * * = 7.25,8.25,9.25 ....
+10,25,45 * * * * = 7.10,7.25,7.45,8,10,8.25,8.45 ... 
+*/5 * * * * = 7.05,7.10,7.15 ... Every 5 Min 
 
-0 6 * * * ---> 6 am
-15 6 * * * ---> 6.15am
-0 */2 * * * ---> every 2 hr 
+0 6 * * * = 6.00 Am
+20 6 * * * = 6.20 Am
+15 */2 * * * = Every 2 hour Diff . 
 
-0 10 28 * * ---> 28th at 10am
-0 10 */5 * * ---> Every 5 day at 10am
+0 10 28 * * = 28th at 10 Am 
+0 10 */2 * * =  2 Day diff 
 
-0 0 1 */2 * ---> after every 2 month
+0 7 15 8 * = Aug 15 , 7 Am 
+0 7 15 */2 * = Diff 2 month 
 
-0 10 * * */2 ---> every two days of a week at 10 am
-0 10 * * 7 ----> every sunday at 10 am    
+0 10 * * 7 = Sunday 10 Am
+0 10 * * */2 =Diff 2 days 
+   
 
 https://crontab.guru/ 
 
