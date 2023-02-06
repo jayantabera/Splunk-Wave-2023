@@ -1,0 +1,52 @@
+ -----------------------  Reports -----------------------
+
+								 
+Report & alart also called savesearch also .
+In a report we can save only a single quarry & we can take statictical table or visulization also . 
+
+Creat a Quarry --- save as --- report --- save --- "Your Report Has Been Created" 
+
+Change The permission . 
+
+Settings ---- search,report& alart
+
+
+* * * * *
+* --> min of the hour(0-59)
+* --> hour of the day (0-23)
+* --> Day of a month (1-31)
+* --> month of a year (1-12)
+* --> Day of a week (0-7) [0,7 --- sunday ]
+                          [1 -- monday ]
+						  
+25 * * * * ----> every 25 min of the hour
+*/5 * * * * ----> every 5 min
+
+0 6 * * * ---> 6 am
+15 6 * * * ---> 6.15am
+0 */2 * * * ---> every 2 hr 
+
+0 10 28 * * ---> 28th at 10am
+0 10 */5 * * ---> Every 5 day at 10am
+
+0 0 1 */2 * ---> after every 2 month
+
+0 10 * * */2 ---> every two days of a week at 10 am
+0 10 * * 7 ----> every sunday at 10 am    
+
+https://crontab.guru/ 
+
+Schedule Report ---- Schedule
+
+Trigger Actions -- email --- link to report 
+                             inline
+							 Link to Results
+
+                --------------                          Alerts               ------------------
+				
+										   
+Creat a Quarry --- save as --- Alerts --- title --- shared in apps --- schedule --- expires(how much time alter it will expires)---Trigger conditions(once-- for all rows one alert triggred/"for each results"-- for every row one alert triggered) --- if you need Throttle ---- Trigger Actions email --- link to report 
+                                                      inline
+						                        	 Link to Results
+							 
+[ Throttle --- once alart triggered for some condition then alart will not triggered untill the Throttle period over ].
