@@ -1,0 +1,22 @@
+ephoc time === 1970 1st Jan 3.00 
+
+human readable to ephoc  = strptime == | eval <new_field>=strptime('human readable field name', " .... ")
+ephoc to human readable  = strftime == | eval <new_field>=strftime('ephoc time field name', " ... ")
+
+
+%d = date 
+%m = month(01,02,03)
+%b = month (Jan,Feb,...)
+%B = month (  January ...)
+%y = year (20,21,22,...)
+%Y = Year (2021,2022,2022 ..)
+
+%H = Hour (0-23) (@4 hr clock )
+%I = Hour (0-12) (12 hour clock )
+%M = min
+%S = sec
+%3N = milisec
+
+index="_internal" | eval time=_time | table time | dedup time | eval human=strftime('time',"%d-%B-%y %H:%M:%S")
+
+index="_internal" | eval time=_time | table time | dedup time | eval human=strftime('time',"%d/%B-%y %H:%M:%S:%3N") | eval ephoc=strptime('human',"%d/%B-%y %H:%M:%S:%3N")
