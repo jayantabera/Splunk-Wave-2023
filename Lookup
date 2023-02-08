@@ -1,0 +1,31 @@
+  <<<-------lookup ----->>>
+
+
+
+
+creating csv file ----->>>
+settings ---lookup --- Lookup table files --- new --- inside which app --- choose your file --- Destination filename with .csv
+
+
+inputlookup --- for accessing our csv files we use inputlookup command & inputlookup mut be the 1st command .
+
+| inputlookup name_status.csv | lookup master.csv name  
+
+output attribute ---- fot output name_status.csv over-right with master.csv data .
+outputnew ----- no over-right
+
+| outputlookup ----->>> 1st you run a quarry then you have a statictical value . using this command you can put this values    into csv file ... & you can creat a report & run every day & your csv file also update every day.
+
+| inputlookup name_status.csv |rename "name" as "user" | lookup master.csv name as user output salary | table user salary location | outputlookup test_20.csv
+
+Lookup definitions
+Destination app---
+
+
+
+Destination app ---- Name --- Lookup table (FROM LOOKUP DEFINATION) --- Apply to ---- Lookup input fields(1)---- Lookup output fields(2) 
+
+
+Lookup input fields(1) ---->> file name from masster file which field i want to match = file name from quarry data which field i want to match with csv data
+
+Lookup output fields(2) ---->>> which name have the quary save = which name want to see in data
