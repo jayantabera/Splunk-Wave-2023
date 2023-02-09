@@ -1,0 +1,29 @@
+linax --->
+sudo su 
+ls
+pwd
+cat
+cd
+rm
+mkdir
+tar
+cp
+mv
+wget
+history
+whoiam
+exit
+clear
+rmdir
+init
+ls -lrt
+ping
+
+
+Vi Editor --->
+
+vi <file_name>
+:wq
+:q
+esc
+I
