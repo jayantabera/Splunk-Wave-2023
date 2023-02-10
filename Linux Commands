@@ -1,28 +1,28 @@
 linax --->
-sudo su 
-ls
-pwd
-cat
-cd
-rm
-mkdir
-tar
-cp
-mv
-wget
-history
-whoiam
-exit
-clear
-rmdir
-init
-ls -lrt
-ping
+sudo su = Super User
+ls = list of all Dir
+pwd = proper Path
+cat = View Any conf file 
+cd = change dir
+rm = remove
+mkdir = create any dir
+tar = untar the tar file
+cp = copy
+mv = move
+wget = Install Command
+history = All history about commands
+whoiam = Details about you
+exit = close the terminal
+clear = clear your terminal
+rmdir = remove dir
+init = reboot or stop the server
+ls -lrt = list of all files which time it created it also show the time .
+ping = Checck cconnectivity between 2 servers
 
 
 Vi Editor --->
 
-vi <file_name>
+vi <file_name> 
 :wq
 :q
 esc
