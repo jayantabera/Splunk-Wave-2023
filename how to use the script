@@ -11,3 +11,4 @@ Change the permission of the file
 # chmod +x a.sh 
 Excute the script 
 # ./a.sh
+# systemctl restart sshd.services
