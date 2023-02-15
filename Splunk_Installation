@@ -1,0 +1,56 @@
+-------- Splunk Installation -------------------
+UF >>>
+
+# sudo su -
+
+# cd /opt
+# wget -O splunkforwarder-8.2.2.1-ae6821b7c64b-Linux-x86_64.tgz 'https://d7wz6hmoaavd0.cloudfront.net/products/universalforwarder/releases/8.2.2.1/linux/splunkforwarder-8.2.2.1-ae6821b7c64b-Linux-x86_64.tgz'
+
+# ls 
+splunkforwarder-8.2.2.1-ae6821b7c64b-Linux-x86_64.tgz
+# tar -xvzf splunkforwarder-8.2.2.1-ae6821b7c64b-Linux-x86_64.tgz
+# cd splunkforwarder
+
+----- /opt/splunkforwarder --- $SPLUNK_HOME
+
+# cd bin
+# pwd 
+--- /opt/splunkforwarder/bin
+# ./splunk start --accept-license
+
+    Please enter an administrator username: admin
+    Please enter a new password: 12345678
+    Please confirm new password: 1234568
+	
+# ./splunk status | start | restart | stop 
+# ./splunk --version 
+# ./splunk enable boot-start 
+
+
+
+
+-------------------------------------
+
+HF / IDX / SH 
+
+# sudo su - 
+# cd /opt 
+# wget -O splunk-8.2.2.1-ae6821b7c64b-Linux-x86_64.tgz 'https://d7wz6hmoaavd0.cloudfront.net/products/splunk/releases/8.2.2.1/linux/splunk-8.2.2.1-ae6821b7c64b-Linux-x86_64.tgz'
+
+# ls 
+splunk-8.2.2.1-ae6821b7c64b-Linux-x86_64.tgz
+# tar -xvzf splunk-8.2.2.1-ae6821b7c64b-Linux-x86_64.tgz
+# cd splunk 
+----------- /opt/splunk - $SPLUNK_HOME
+# cd bin
+# pwd 
+--- /opt/splunkforwarder/bin
+# ./splunk start --accept-license
+
+    Please enter an administrator username: admin
+    Please enter a new password: 12345678
+    Please confirm new password: 1234568
+	
+# ./splunk status | start | restart | stop 
+# ./splunk --version 
+# ./splunk enable boot-start 
