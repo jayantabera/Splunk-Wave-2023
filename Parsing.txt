@@ -1,0 +1,61 @@
+
+------- Parsing -------
+
+HF >>>>
+
+# cd $SPLUNK_HOME/etc/system/local 
+
+# cd /opt/splunk/etc/system/local
+
+props.conf 
+
+# vi props.conf
+
+[<sourcetype_name>]
+arrtibute=value 
+
+
+
+--------------------------------------------- Event Breaking --------------------
+
+this is mohammad 
+this is atin
+this is rahul 
+
+
+this is mohammad 
+
+this is atin 
+
+this is rahul 
+
+SHOULD_LINEMERGE=false
+
+
+[test_data]
+SHOULD_LINEMERGE=false
+
+
+# /opt/splunk/bin/splunk restart 
+
+
+--------------------------------------------------- Line Breaking ----------------------------------------
+this is atin,he is from kolkata,  
+this is mohammad,he is from delhi,
+this is dinakar,he is from hyderabad,
+
+
+LINE_BREAKER = (,)
+
+
+this is atin
+
+he is from kolkata
+
+this is mohammad
+
+he is from delhi
+
+this is dinakar
+
+he is from hyderabad 
