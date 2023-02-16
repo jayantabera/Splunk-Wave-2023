@@ -1,0 +1,34 @@
+
+----------------------- Advance Data Onboarding ------------------
+
+abc.txt 
+bcd.txt 
+zz.txt 
+6th-Oct-cc.txt 
+7th-Oct-cc.txt 
+
+
+ab.json 
+zz.json 
+
+
+
+/tmp/ 
+---------------------
+
+inputs.conf 
+
+#cd $SPLUNK_HOME/etc/system/local 
+# cd /opt/splunkforwarder/etc/system/local
+
+
+# vi inputs.conf 
+
+[monitor:///tmp/*.txt]
+index=training
+sourcetype=test_data
+
+
+[monitor:///tmp/*.json]
+index=training
+sourcetype=test_json 
