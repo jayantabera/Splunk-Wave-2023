@@ -1,0 +1,42 @@
+-------- Data Onboarding ---------
+
+IDX >>>>>
+
+GUI >>
+
+Settings >>> Indexes >> New Index 
+
+give the name "training" and save it.
+
+
+
+UF >> 
+
+inputs.conf 
+
+#cd $SPLUNK_HOME/etc/system/local 
+# cd /opt/splunkforwarder/etc/system/local
+
+
+"main" is the default index of Splunk 
+
+# vi inputs.conf 
+
+[monitor://<path of the log file>]
+index=<index_name>
+sourcetype=<sourcetype_name> 
+
+
+
+[monitor:///tmp/test.txt]
+index=training
+sourcetype=test_data 
+
+
+
+# cd /opt/splunkforwarder/bin 
+# ./splunk restart 
+
+OR 
+
+# /opt/splunkforwarder/bin/splunk restart 
