@@ -1,0 +1,99 @@
+------- Masking -------
+
+HF >>>>
+
+# cd $SPLUNK_HOME/etc/system/local 
+
+# cd /opt/splunk/etc/system/local
+
+props.conf 
+
+# vi props.conf
+
+[<sourcetype_name>]
+arrtibute=value 
+
+-------- Masking --------------------
+SEDCMD-<class_name>=s/<old_pattern>/<new_pattern>/g 
+
+
+--------------------------------- Hard Code Masking -------
+
+this is dinakar and he is from kolkata 
+this is atin and he is from delhi 
+this is mohammad and he is from mumbai 
+atin went to market 
+
+------
+
+this is dinakar and he is from kolkata 
+
+this is raja and he is from delhi 
+
+this is mohammad and he is from mumbai 
+
+raja went to market 
+
+------------
+SEDCMD-namemask=s/(?i)ayan /raja/g
+
+-------------------------------- Full Masking ----------------------
+
+This is atin and his acc number is 4241424
+this is mohammad and his acc number is 523525
+he is atin and his acc number is 059205972
+i am jayanta and my acc number is 25266652
+
+
+extracted pattern ----
+
+\w - character or alphabate 
+\d - digit 
+\s - space 
+? - 0 or 1 occurance
++ - 1 or more occurances
+.* - All or Everyting
+
+\[
+\]
+\.
+\,
+
+
+This is atin and his acc number is xxx
+this is mohammad and his acc number is xxx
+he is atin and his acc number is xxx
+i am jayanta and my acc number is xxx 
+
+
+This is atin and his acc number is 4241424
+
+.*\s+\d+
+
+(\w+\s+\w+\s+\w+.*\s+)(\d+)
+     1                  2 
+	 
+
+SEDCMD-accountmask=s/(\w+\s+\w+\s+\w+.*\s+)(\d+)/\1xxxx/g
+
+
+------------------------------------------------- Partial Masking ------------------------------
+
+This is atin he logged in from 198.78.89.67 using port  234
+this is dinakar and he logged out from 192.168.56.78 using port 23 
+this is mohammad and he logged in from 10.56.78.23 using port 2489 
+
+
+(\w+.*\s+)(\d+\.\d+)(\.\d+\.\d+\s+.*\s+)(\d)(\d+)
+
+  1           2            3              4   5      
+
+
+
+
+This is atin he logged in from xxx.xxx.89.67 using port x34
+this is dinakar and he logged out from xxx.xxx.56.78 using port x3 
+this is mohammadd and he logged in from xxx.xxx.78.23 using port x489
+
+
+SEDCMD-ipmask=s/(\w+.*\s+)(\d+\.\d+)(\.\d+\.\d+\s+.*\s+)(\d)(\d+)/\1xxx.xxx\3x\5/g
