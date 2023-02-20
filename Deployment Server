@@ -1,0 +1,105 @@
+-----Deployment Server -------
+
+SH/DS 
+
+# cd /opt/splunk/bin 
+# ./splunk enable deploy-server 
+
+
+-------- Deployment Client -------
+
+UF/HF/IDX ----
+
+# cd $SPLUNK_HOME/bin 
+# ./splunk set deploy-poll https://<ip_of_ds>:8089 
+# ./splunk set deploy-poll https://172.31.40.2:8089 
+
+# cd /opt/splunk/etc/system/local/
+
+# cat deploymentclient.conf
+
+--------------------------------------------------
+
+DS -----
+
+app creation --
+
+# cd /opt/splunk/etc/deployment-apps 
+
+              ----- app_name 
+			          ------ local 
+					           ------- .conf files 
+							   
+----- ufinput 
+        ---- local 
+              --- inputs.conf 
+
+[monitor:///tmp/ds/a.txt]
+index=training 
+sourcetype=dslog 
+
+
+Serverclass creation ---
+
+# cd /opt/splunk/etc/system/local 
+
+# ls 
+serverclass.conf 
+
+# vi serverclass.conf 
+
+
+[serverClass:all_uf]
+whitelist.0=10.10.2.*
+blacklist.0=10.10.2.3 
+
+
+
+[serverClass:all_uf]
+whitelist.0=172.31.29.47
+
+
+[serverClass:all_uf:app:ufinput]
+restartSplunkd=1
+restartSplunkWeb=0
+
+
+# cd /opt/splunk/bin
+# ./splunk reload deploy-server 
+
+
+
+----- DC ---- UF ----
+# /opt/splunkforwarder/etc/apps
+
+------------------------------------------------------------------------HF ----------------------
+
+
+# cd /opt/splunk/etc/deployment-apps 
+# mkdir allparsing
+# cd allparsing
+# mkdir local 
+# cd local 
+# vi props.conf 
+
+[dslog]
+SHOULD_LINEMERGE=false 
+
+
+
+
+
+# cd /opt/splunk/etc/system/local 
+
+# ls 
+serverclass.conf 
+
+# vi serverclass.conf 
+
+[serverClass:all_hf]
+whitelist.0=172.31.23.141
+
+
+[serverClass:all_hf:app:allparsing]
+restartSplunkd=1
+restartSplunkWeb=0
