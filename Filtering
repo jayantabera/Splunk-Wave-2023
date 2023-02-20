@@ -1,0 +1,113 @@
+----------------------- Filtering --------------------
+
+HF >>>>
+
+# cd $SPLUNK_HOME/etc/system/local 
+
+# cd /opt/splunk/etc/system/local
+
+transforms.conf 
+[<transformation_name>]
+attribute = value 
+
+
+props.conf 
+
+# vi props.conf
+
+[<sourcetype_name>]
+TRANSFORMS-<class_name>=<transformation_name1>,<transformation_name2>......
+
+
+---------------------------------------- Taking the lines which are having the keyword called "kolkata"-----------------
+
+
+this is ayan and he is from kolkata 
+this is aniket and he is from delhi 
+kolkata is a big city 
+he lives in kolkata 
+
+
+
+this is ayan and he is from kolkata 
+
+kolkata is a big city 
+
+he lives in kolkata
+
+--------------------------
+
+props.conf 
+[testlog]
+SHOULD_LINMERGE=false
+TRANSFORMS-filter=one,two 
+
+
+transforms.conf
+
+[one]
+REGEX=.
+DEST_KEY=queue
+FORMAT=nullQueue
+
+
+[two]
+REGEX=(?i)kolkata
+DEST_KEY=queue
+FORMAT=indexQueue
+
+
+---------------------------------------- Not to Take the lines which are having the keyword called "kolkata"-----------------
+
+
+this is ayan and he is from kolkata 
+this is aniket and he is from delhi 
+kolkata is a big city 
+he lives in kolkata
+
+
+
+this is aniket and he is from delhi 
+
+
+props.conf 
+
+[testlog]
+SHOULD_LINMERGE=false
+TRANSFORMS-discard=kolkatadata
+
+
+transforms.conf
+
+[kolkatadata]
+REGEX=(?i)kolkata
+DEST_KEY=queue
+FORMAT=nullQueue
+
+
+------------------------------------------- Field Extraction --------------------------------------------------------
+
+this is ayan and he logged in from 198.67.78.90 using port 45
+this is raja and he looged in from 192.23.45.67 using port 23 
+this is ramesh and he logged in from 10.2.3.5 using port 4554 
+
+\w+\s+\w+\s+(\w+)\s+.*\s+(\d+\.\d+\.\d+\.\d+)\s+.*\s+(\d+)
+
+              1                  2                     3 
+
+name=ayan ip=198.67.78.9 port=45 
+name=raja ip=192.23.45.67 port=23 
+name=ramesh ip=10.2.3.5 port=14 
+
+
+[testlog]
+SHOULD_LINMERGE=false
+TRANSFORMS-field=fieldextract 
+
+
+transforms.conf
+
+[fieldextract]
+REGEX=\w+\s+\w+\s+(\w+)\s+.*\s+(\d+\.\d+\.\d+\.\d+)\s+.*\s+(\d+)
+FORMAT=name=$1 ip=$2 port=$3 
+DEST_KEY=_raw 
